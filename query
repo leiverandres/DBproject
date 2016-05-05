@@ -1,0 +1,86 @@
+CREATE TABLE Direccion (
+ID_Direccion INT NOT NULL,
+Calle VARCHAR(25) NOT NULL,
+No INT NOT NULL,
+Ciudad VARCHAR(15) NOT NULL,
+Departamento VARCHAR(15) NOT NULL,
+PRIMARY KEY (ID_Direccion) );
+
+
+CREATE TABLE Concesionario (
+ID_Concesionario INT NOT NULL,
+Direccion VARCHAR(36) NOT NULL,
+PRIMARY KEY (ID_Concesionario) );
+
+CREATE TABLE Marca (
+ID_Marca INT NOT NULL,
+Nombre_Marca VARCHAR(25) NOT NULL,
+PRIMARY KEY (ID_Marca) );
+
+
+CREATE TABLE Concesionario_Marca (
+ID_Registro INT auto_increment NOT NULL,
+ID_Concesionario INT NOT NULL,
+ID_MARCA INT NOT NULL,
+PRIMARY KEY (ID_Registro),
+FOREIGN KEY (ID_Concesionario) REFERENCES Concesionario (ID_Concesionario),
+FOREIGN KEY (ID_Marca) REFERENCES Marca (ID_Marca) );
+
+
+CREATE TABLE Modelo (
+ID_Modelo INT auto_increment NOT NULL,
+Nombre_Modelo VARCHAR(20) NOT NULL,
+Potencia INT NOT NULL,
+ID_Marca INT NOT NULL,
+PRIMARY KEY (ID_Modelo),
+FOREIGN KEY (ID_Marca) REFERENCES Marca (ID_Marca) );
+
+
+CREATE TABLE Tipo_Persona (
+ID_Tipo_Persona INT NOT NULL,
+Nombre_Tipo_Persona VARCHAR(15) NOT NULL,
+PRIMARY KEY (ID_Tipo_Persona) );
+
+CREATE TABLE Persona(
+NIT_Persona INT NOT NULL,
+ID_Tipo_Persona INT NOT NULL,
+Nombres_Propietario VARCHAR(25) NOT NULL,
+Apellidos_Propietario VARCHAR(25) NOT NULL,
+Fecha_Nacimiento DATE NOT NULL,
+ID_Direccion INT NOT NULL,
+PRIMARY KEY (NIT_Persona),
+FOREIGN KEY (ID_Tipo_Persona) REFERENCES Tipo_Persona (ID_Tipo_Persona),
+FOREIGN KEY (ID_Direccion) REFERENCES Direccion (ID_Direccion) );
+
+
+CREATE TABLE Matricula_Vehiculo (
+Matricula VARCHAR(6) NOT NULL,
+ID_Modelo INT NOT NULL,
+Fecha_Matricula DATE NOT NULL,
+NIT_Persona INT NOT NULL,
+PRIMARY KEY (Matricula),
+FOREIGN KEY (ID_Modelo) REFERENCES Modelo (ID_Modelo),
+FOREIGN KEY (NIT_Persona) REFERENCES Persona (NIT_Persona) );
+
+
+CREATE TABLE Direccion_Multa (
+ID_Direccion_Multa INT auto_increment NOT NULL,
+Carretera INT NOT NULL,
+Kilometro INT NOT NULL,
+ID_Direccion INT NOT NULL,
+PRIMARY KEY (ID_Direccion_Multa),
+FOREIGN KEY (ID_Direccion) REFERENCES Direccion (ID_Direccion) );
+
+
+CREATE TABLE Multa (
+ID_Multa INT auto_increment NOT NULL,
+NIT_Persona INT NOT NULL,
+Matricula VARCHAR(6) NOT NULL,
+Fecha_Multa DATE NOT NULL,
+ID_Agente INT NOT NULL,
+Importe_Multa DOUBLE NOT NULL,
+ID_Direccion_Multa INT NOT NULL,
+Descripcion VARCHAR(114) NOT NULL,
+PRIMARY KEY (ID_Multa),
+FOREIGN KEY (NIT_Persona) REFERENCES Persona (NIT_Persona),
+FOREIGN KEY (ID_Direccion_Multa) REFERENCES Direccion_Multa (ID_Direccion_Multa) );

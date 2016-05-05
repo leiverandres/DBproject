@@ -1,0 +1,14 @@
+{
+  "dev": {
+    "driver": "mysql",
+    "user": "root",
+    "database": "transitoDB",
+    "password": "leivermiamis1995"
+  },
+
+  "production": {
+    "driver": "mysql",
+    "user": "root",
+    "database": "transitoDB"
+  }
+}
