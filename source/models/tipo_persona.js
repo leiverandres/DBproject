@@ -7,11 +7,12 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		Nombre_Tipo_Persona: {
 			type: DataTypes.STRING,
-			allowNull: false
+			allowNull: false,
+			unique: true
 		}
 	},
 	{
 		timestamps: false,
 		freezeTableName: true
-	});	
+	});
 }

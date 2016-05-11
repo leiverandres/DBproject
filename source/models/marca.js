@@ -7,11 +7,12 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		Nombre_Marca: {
 			type: DataTypes.STRING,
-			allowNul: false
+			allowNul: false,
+			unique: true
 		}
-	}, 
+	},
 	{
 		timestamps: false,
 		freezeTableName: true
-	});	
+	});
 }

@@ -4,14 +4,10 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
-		},
-		Direccion: {
-			type: DataTypes.STRING,
-			allowNul: false
 		}
-	}, 
+	},
 	{
 		timestamps: false,
 		freezeTableName: true
-	});	
+	});
 }
