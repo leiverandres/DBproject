@@ -1,10 +1,15 @@
 var colors = require('colors');
 var path = require('path');
 var Sequelize = require('sequelize');
-
 var connection = require(path.join(__dirname, '../', 'connection'));
 
 var Direccion = connection.import(path.join(__dirname, 'direccion'));
+var Marca = require(path.join(__dirname, 'marca'));
+var Concesionario = requre(path.join(__dirname, 'Concesionario'));
+var Concesionario_marca = requre(path_join(__dirname, 'Concesionario_marca'));
+
+
+// connections
 
 exports.Direccion = Direccion;
 
