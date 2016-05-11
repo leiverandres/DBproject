@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('direcciones', {
-    ID_Direccion: { // sequelize generate an Id
+    ID_Direccion: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true
     },
     Calle: {
       type: DataTypes.STRING,
@@ -21,7 +21,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     }
-  }, {
+  },
+  {
       timestamps: false,
       freezeTableName: true // quitar plural automatico de las tablas
   });

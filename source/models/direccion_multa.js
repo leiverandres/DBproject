@@ -12,15 +12,10 @@ module.exports = function(sequelize, DataTypes) {
 		Kilometro: {
 			type: DataTypes.INTEGER,
 			allowNull: false
-		},
-		ID_Direccion: {
-			type: DataTypes.INTEGER,
-			allowNull: false
 		}
-	}, 
+	},
 	{
 		timestamps: false,
 		freezeTableName: true
-	});	
+	});
 }
-//Pendientes las FOREIGN KEY
