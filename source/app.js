@@ -4,57 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var Sequelize = require('sequelize');
-
-
-var connection = require('./connection');
-var Direccion = connection.define('direcciones', {
-  ID_Direccion: { // sequelize generate an Id
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  Calle: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  Numero: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
-  Ciudad: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  Departamento: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-}, {
-  timestamps: false
-  //freezeTableName: true #quitar plural automatico de las tablas
-});
-
-connection.sync({
-  force: true, // drop tables before create them
-  logging: console.log
-}).then(function() {
-  console.log("Data base connection done!");
-  // Direccion.create({
-  //   Calle: 'test Calle',
-  //   Numero: 12,
-  //   Ciudad: 'Pereira',
-  //   Departamento: 'Risaralda'
-  // });
-  // Direccion.create({
-  //   Calle: 'test Calle 2',
-  //   Numero: 13,
-  //   Ciudad: 'Pereira',
-  //   Departamento: 'Risaralda'
-  // });
-}, function() {
-  console.log("Data base connection failed!");
-});
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -108,6 +57,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
