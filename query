@@ -12,6 +12,7 @@ ID_Concesionario INT NOT NULL,
 Direccion VARCHAR(36) NOT NULL,
 PRIMARY KEY (ID_Concesionario) );
 
+
 CREATE TABLE Marca (
 ID_Marca INT NOT NULL,
 Nombre_Marca VARCHAR(25) NOT NULL,
@@ -84,3 +85,18 @@ Descripcion VARCHAR(114) NOT NULL,
 PRIMARY KEY (ID_Multa),
 FOREIGN KEY (NIT_Persona) REFERENCES Persona (NIT_Persona),
 FOREIGN KEY (ID_Direccion_Multa) REFERENCES Direccion_Multa (ID_Direccion_Multa) );
+
+
+CREATE TABLE Agente_Transito (
+ID_Agente INT NOT NULL,
+NIT_Persona INT NOT NULL,
+PRIMARY KEY (ID_Agente),
+FOREIGN KEY (NIT_Persona) REFERENCES Persona (NIT_Persona) );
+
+
+CREATE TABLE Multa_Ley (
+ID_Multa_Ley INT auto_increment NOT NULL,
+ID_Multa INT NOT NULL,
+ID_Ley_Infraccion VARCHAR(50) NOT NULL,
+PRIMARY KEY (ID_Multa_Ley),
+FOREIGN KEY (ID_Multa) REFERENCES Multa (ID_Multa) );
