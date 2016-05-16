@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('direccioes_multa', {
+	return sequelize.define('direcciones_multa', {
 		ID_Direccion_Multa: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,

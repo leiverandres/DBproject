@@ -4,17 +4,17 @@ var Sequelize = require('sequelize');
 var connection = require(path.join(__dirname, '../', 'connection'));
 
 var Direccion = connection.import(path.join(__dirname, 'direccion'));
-var Marca = require(path.join(__dirname, 'marca'));
-var Concesionario = require(path.join(__dirname, 'concesionario'));
-var Concesionario_Marca = require(path.join(__dirname, 'concesionario_marca'));
-var Modelo = require(path.join(__dirname, 'modelo'));
-var Tipo_Persona = require(path.join(__dirname, 'tipo_persona'));
-var Persona = require(path.join(__dirname, 'persona'));
-var Direccion_Multa = require(path.join(__dirname, 'direccion_multa'));
-var Multa_Ley = require(path.join(__dirname, 'multa_ley'));
-var Agente_Transito = require(path.join(__dirname, 'agente_transito'));
-var Matricula_Vehiculo = require(path.join(__dirname, 'matricula_vehiculo'));
-var Multa = require(path.join(__dirname, 'multa'));
+var Marca = connection.import(path.join(__dirname, 'marca'));
+var Concesionario = connection.import(path.join(__dirname, 'concesionario'));
+var Concesionario_Marca = connection.import(path.join(__dirname, 'concesionario_marca'));
+var Modelo = connection.import(path.join(__dirname, 'modelo'));
+var Tipo_Persona = connection.import(path.join(__dirname, 'tipo_persona'));
+var Persona = connection.import(path.join(__dirname, 'persona'));
+var Direccion_Multa = connection.import(path.join(__dirname, 'direccion_multa'));
+var Multa_Ley = connection.import(path.join(__dirname, 'multa_ley'));
+var Agente_Transito = connection.import(path.join(__dirname, 'agente_transito'));
+var Matricula_Vehiculo = connection.import(path.join(__dirname, 'matricula_vehiculo'));
+var Multa = connection.import(path.join(__dirname, 'multa'));
 
 // connections
 
