@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('concesionarios_marca', {
+	return sequelize.define('concesionario_marca', {
 		ID_Registro: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
@@ -11,4 +11,3 @@ module.exports = function(sequelize, DataTypes) {
 		freezeTableName: true
 	});
 }
-//Pendientes las FOREIGN KEY

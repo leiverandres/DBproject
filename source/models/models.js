@@ -11,12 +11,24 @@ var Modelo = connection.import(path.join(__dirname, 'modelo'));
 var Tipo_Persona = connection.import(path.join(__dirname, 'tipo_persona'));
 var Persona = connection.import(path.join(__dirname, 'persona'));
 var Direccion_Multa = connection.import(path.join(__dirname, 'direccion_multa'));
-var Multa_Ley = connection.import(path.join(__dirname, 'multa_ley'));
 var Agente_Transito = connection.import(path.join(__dirname, 'agente_transito'));
 var Matricula_Vehiculo = connection.import(path.join(__dirname, 'matricula_vehiculo'));
 var Multa = connection.import(path.join(__dirname, 'multa'));
 
-// connections
+// connections =================================================================
+
+// Concesionario.belongsTo(Concesionario_Marca, {as: 'foo',  allowNull: false});
+// Concesionario_Marca.hasMany(Concesionario, {foreignKey: {name: "ID_Concesionario", allowNull: false}});
+// Concesionario.belongsTo(Concesionario_Marca);
+
+Concesionario.belongsTo(Direccion, {foreignKey: 'ID_Direccion', allowNull: false});
+
+Concesionario_Marca.hasMany(Concesionario, {as: 'Concesionario'});
+Concesionario_Marca.hasMany(Marca, {as: 'Marca'});
+
+
+
+// =============================================================================
 
 exports.Direccion = Direccion;
 exports.Marca = Marca;
@@ -26,7 +38,6 @@ exports.Modelo = Modelo;
 exports.Tipo_Persona = Tipo_Persona;
 exports.Persona = Persona;
 exports.Direccion_Multa = Direccion_Multa;
-exports.Multa_Ley = Multa_Ley;
 exports.Agente_Transito = Agente_Transito;
 exports.Matricula_Vehiculo = Matricula_Vehiculo;
 exports.Multa = Multa;

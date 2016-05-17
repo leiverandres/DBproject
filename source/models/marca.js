@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('marcas', {
+	return sequelize.define('marca', {
 		ID_Marca: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,

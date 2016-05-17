@@ -9,6 +9,10 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.DATE,
 			allowNull: false
 		},
+		Ley_Infringida: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
 		Importe_Multa: {
 			type: DataTypes.DOUBLE,
 			allowNull: false
@@ -23,4 +27,3 @@ module.exports = function(sequelize, DataTypes) {
 		freezeTableName: true
 	});
 }
-//Pendientes las FOREIGN KEY
