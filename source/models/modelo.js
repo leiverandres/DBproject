@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('modelos', {
+	return sequelize.define('modelo', {
 		ID_Modelo: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
@@ -19,4 +19,3 @@ module.exports = function(sequelize, DataTypes) {
 		freezeTableName: true
 	});
 }
-//Pendientes las FOREIGN KEY

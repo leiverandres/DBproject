@@ -17,15 +17,14 @@ var Multa = connection.import(path.join(__dirname, 'multa'));
 
 // connections =================================================================
 
-// Concesionario.belongsTo(Concesionario_Marca, {as: 'foo',  allowNull: false});
-// Concesionario_Marca.hasMany(Concesionario, {foreignKey: {name: "ID_Concesionario", allowNull: false}});
-// Concesionario.belongsTo(Concesionario_Marca);
+Concesionario.belongsTo(Direccion, {foreignKey: 'ID_Direccion'});
 
-Concesionario.belongsTo(Direccion, {foreignKey: 'ID_Direccion', allowNull: false});
+Concesionario.belongsToMany(Marca, {as: 'Concesionario', through: Concesionario_Marca, foreignKey: 'ID_Concesionario'});
+Marca.belongsToMany(Concesionario, {as: 'Marca', through: Concesionario_Marca, foreignKey: 'ID_Marca'});
 
-Concesionario_Marca.hasMany(Concesionario, {as: 'Concesionario'});
-Concesionario_Marca.hasMany(Marca, {as: 'Marca'});
+Marca.hasMany(Modelo, {as: 'Marcas', foreignKey: 'ID_Marca'});
 
+Tipo_Persona.hasMany(Persona, {as: 'Tipo', foreignKey: 'Tipo_Persona'});
 
 
 // =============================================================================
