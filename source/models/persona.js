@@ -4,30 +4,21 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 		},
-		ID_Tipo_Persona: {
-			type: DataTypes.INTEGER,
-			allowNull: false
-		},
-		Nombres_Propietario: {
+		Nombres_Persona: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		Apellidos_Propietario: {
+		Apellidos_Persona: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
 		Fecha_Nacimiento: {
 			type: DataTypes.DATE,
 			allowNull: false
-		},
-		ID_Direccion: {
-			type: DataTypes.INTEGER,
-			allowNull: false
 		}
-	}, 
+	},
 	{
 		timestamps: false,
 		freezeTableName: true
-	});	
+	});
 }
-//Pendientes las FOREIGN KEY

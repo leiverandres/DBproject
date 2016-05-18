@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('direccioes_multa', {
+	return sequelize.define('direcciones_multa', {
 		ID_Direccion_Multa: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
@@ -12,15 +12,10 @@ module.exports = function(sequelize, DataTypes) {
 		Kilometro: {
 			type: DataTypes.INTEGER,
 			allowNull: false
-		},
-		ID_Direccion: {
-			type: DataTypes.INTEGER,
-			allowNull: false
 		}
-	}, 
+	},
 	{
 		timestamps: false,
 		freezeTableName: true
-	});	
+	});
 }
-//Pendientes las FOREIGN KEY
