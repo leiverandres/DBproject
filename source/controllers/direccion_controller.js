@@ -1,3 +1,5 @@
 var models = require('./../models/models.js');
 
-// here define the actions, retrieval
+exports.createDireccion = function(req, res) {
+  models.direccion.build({});
+}
