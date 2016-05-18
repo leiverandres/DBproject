@@ -25,7 +25,10 @@ Marca.belongsToMany(Concesionario, {as: 'Marca', through: Concesionario_Marca, f
 Marca.hasMany(Modelo, {as: 'Marcas', foreignKey: 'ID_Marca'});
 
 Tipo_Persona.hasMany(Persona, {as: 'Tipo', foreignKey: 'Tipo_Persona'});
+Direccion.hasOne(Persona, {as: 'Direccion', foreignKey: 'ID_Direccion'});
 
+Modelo.belongsToMany(Persona, {as: 'Modelo', through: Matricula_Vehiculo, foreignKey: 'Modelo'});
+Persona.belongsToMany(Modelo, {as: 'Propietario', through: Matricula_Vehiculo, foreignKey: 'NIT_Propietario'});
 
 // =============================================================================
 
