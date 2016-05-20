@@ -8,7 +8,7 @@ var partials = require('express-partials');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var api = require('./routes/api');
+var admin = require('./routes/admin');
 
 var app = express();
 
@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/api/v1', api)
+app.use('/admin', admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,7 +56,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
-    error: {}
+    error: {status: err.status}
   });
 });
 

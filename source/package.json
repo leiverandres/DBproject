@@ -12,6 +12,7 @@
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
+    "express-partials": "^0.3.0",
     "morgan": "~1.6.1",
     "mysql": "^2.10.2",
     "sequelize": "^3.22.0",
