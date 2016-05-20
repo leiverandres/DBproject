@@ -7,5 +7,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/direcciones', controllers.retrieveAll);
+router.post('/direcciones', controllers.add);
+router.get('/direcciones/add', controllers.dirForm)
 
 module.exports = router;
