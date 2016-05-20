@@ -1,0 +1,28 @@
+<h2><%= title %></h2>
+  <% if (data) { %>
+    <table>
+      <thead>
+        <tr>
+            <th data-field="id">Index</th>
+            <th data-field="calle">Calle</th>
+            <th data-field="numero">Numero</th>
+            <th data-field="ciudad">Ciudad</th>
+            <th data-field="departamento">Departamento</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% for (var i=0; i < data.length; i++) {%>
+          <tr>
+            <td><%= data[i].ID_Direccion %></td>
+            <td><%= data[i].Calle %></td>
+            <td><%= data[i].Numero %></td>
+            <td><%= data[i].Ciudad %></td>
+            <td><%= data[i].Departamento %></td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <p class="flow-text">No se encontro ninguna direccion</p>
+  <% } %>
