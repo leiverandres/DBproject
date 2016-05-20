@@ -8,5 +8,4 @@ router.get('/', function(req, res) {
 
 router.get('/direcciones', controllers.retrieveAll);
 
-
 module.exports = router;
