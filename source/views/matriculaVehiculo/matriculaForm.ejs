@@ -1,0 +1,90 @@
+<h2>  Ingresa los datos de la Matricula </h2>
+<div class="row right">
+  <h4><%= date %> </h4>
+</div>
+<div class="row">
+  <form action="/matriculas_vehiculo" method='post' class="col s12 112">
+    <div class="row">
+      <fieldset class="col l12 s12 m12">
+        <legend class="flow-text">Información del Vehiculo</legend>
+        <div class="row">
+          <div class="input-field col l6 s12 m12">
+            <input id="placa" name="placa" type="text" class="validate" required="" pattern="[\w]{3}[\d]{3}">
+            <label for="placa">Matricula/Placa</label>
+          </div>
+          <div class="input-field col l6 s12 m12">
+            <input id="marca" name="marca" type="text" class="validate" required="" >
+            <label for="marca">Marca</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col l6 s12 m12">
+            <input id="potencia" name="potencia" type="text" class="validate" required="" pattern="[\d]{2,5}">
+            <label for="potencia">Potencia/Cilindraje</label>
+          </div>
+          <div class="input-field col l6 s12 m12">
+            <input id="modelo" name="modelo" type="text" class="validate" required="" >
+            <label for="modelo">Modelo</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+      <div class="row">
+        <fieldset class="col l12 s12 m12">
+          <legend class="flow-text">Información Persona</legend>
+          <div class="row">
+            <div class="input-field col l6 s12 m12">
+              <input id="nitPersona" name="nitPersona" type="text" class="validate" required="" pattern="[\d]{1,15}">
+              <label for="nitPersona">Nit/Cedula</label>
+            </div>
+            <div class="input-field col l6 s12 m12">
+              <input id="nombres" name="nombres" type="text" class="validate" >
+              <label for="nombres">Nombres</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col l6 s12 m12">
+              <input id="apellidos" name="apellidos" type="text" class="validate" required="">
+              <label for="apellidos">Apellidos</label>
+            </div>
+            <div class="col s12 m12 l12">
+              <label for="fechaNacimiento">Fecha de Nacimiento</label>
+              <input placeholder="MM/DD/YYYY" id="fechaNacimiento" name="fechaNacimiento" type="date" class="validate color:#212121" required="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col l6 s12 m12">
+              <input id="calle" name="calle" type="text" class="validate" required="" >
+              <label for="calle">Calle</label>
+            </div>
+            <div class="input-field col l6 s12 m12">
+              <input id="numero" name="numero" type="text" class="validate" required="">
+              <label for="numero">Numero/Piso</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col l6 s12 m12">
+              <input id="departamento" name="departamento" type="text" class="validate" required="" >
+              <label for="departamento">Departamento</label>
+            </div>
+            <div class="input-field col l6 s12 m12">
+              <input id="ciudad" name="ciudad" type="text" class="validate" required="">
+              <label for="ciudad">Ciudad</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="row">
+        <div class="row center">
+          <button class="btn waves-effect waves-light light-green darken-3" type="submit" name="action">
+            Enviar
+            <i class="material-icons right">send</i>
+          </button>
+          <button class="btn waves-effect waves-light orange darken-3" type="button" value="cancel" name="cancel" onclick="cancelAdd()">
+            Cancelar
+            <i class="material-icons right">backspace</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>

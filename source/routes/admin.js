@@ -1,13 +1,16 @@
 var express = require('express');
-var controllers = require('./../controllers/direccion_controller')
+var dirControllers = require('./../controllers/direccion_controller');
+var matControllers = require('./../controllers/matricula_controller');
 var router = express.Router();
 
 router.get('/', function(req, res) {
   res.render('index', { title: 'Welcome'});
 });
 
-router.get('/direcciones', controllers.retrieveAll);
-router.post('/direcciones', controllers.add);
-router.get('/direcciones/add', controllers.dirForm)
+router.get('/direcciones', dirControllers.retrieveAll);
+router.post('/direcciones', dirControllers.add);
+router.get('/direcciones/add', dirControllers.dirForm);
+
+router.get('/matriculas/add', matControllers.matriculaForm);
 
 module.exports = router;
