@@ -5,8 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var partials = require('express-partials');
+var methodOverride = require('method-override')
 
 var routes = require('./routes/index');
+var multas = require('./routes/multas');
 var users = require('./routes/users');
 var admin = require('./routes/admin');
 
@@ -22,11 +24,12 @@ app.use(partials());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/multas', multas);
 app.use('/admin', admin);
 
 // catch 404 and forward to error handler

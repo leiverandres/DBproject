@@ -1,18 +1,3 @@
-| url               | method   | description                | params        |
-| ------------------| -------- | -------------------------- | ------------- |
-| api/multas        |GET       | Retorna todas las multas   | NA            |
-| api/multas        |POST      | Agrega una multa | u   |
-| api/multas/:id    |GET       | Retorna |          |
-| api/multas/:id    |DELETE    | Elimina una multa | |
-|||||
-|||||
-|||||
-|||||
-|||||
-||||||
-
-
-
 # Create
 * Multas a una persona .
 * Agente .

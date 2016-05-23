@@ -1,0 +1,134 @@
+<h2>Ingresa los datos de la multa</h2>
+<div class="row right">
+  <h4><%= date %></h4>
+</div>
+<div class="row">
+  <form action="/multas" method='post' class="col s12 l12">
+    <div class="row">
+      <fieldset class="col l12 s12 m12">
+        <legend class="flow-text">Información del Infractor</legend>
+        <div class="row">
+          <div class="input-field col s12 m12 l6">
+            <input id="nitInfractor" name="nitInfractor" type="text" class="validate" required="" pattern="[\d]{1,15}">
+            <label for="nitInfractor">NIT/Cedula</label>
+          </div>
+          <div class="input-field col s12 m12 l6">
+            <input id="placa" name="placa" type="text" class="validate" pattern="[\w]{3}[\d]{3}">
+            <label for="placa">Placa</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l6">
+            <input id="Nombres" name="Nombres" type="text" class="validate" required="">
+            <label for="Nombres">Nombres</label>
+          </div>
+          <div class="input-field col s12 m12 l6">
+            <input id="Apellidos" name="Apellidos" type="text" class="validate" required="">
+            <label for="Apellidos">Apellidos</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <label for="fechaNacimiento">Fecha de Nacimiento</label>
+            <input placeholder="MM/DD/YYYY" id="fechaNacimiento" name="fechaNacimiento" type="date" class="validate color:#212121" required="">
+          </div>
+        </div>
+        <p class="flow-text">Residencia</p>
+        <div class="row">
+          <div class="input-field col s12 m6 l6">
+            <input id="departamento" name="departamento" type="text" class="validate" required="">
+            <label for="departamento">Departamento</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input id="ciudad" name="ciudad" type="text" class="validate" required="">
+            <label for="ciudad">Ciudad</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6 l6">
+            <input id="calle" name="calle" type="text" class="validate" required="">
+            <label for="calle">Calle</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input name="numero" id="numero" type="text" class="validate" required="">
+            <label for="numero">Numero</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="row">
+      <fieldset>
+        <legend class="flow-text">Detalles sobre la infracción</legend>
+        <div class="row">
+          <div class="input-field col s12 m12 l6">
+            <input id="idAgente" name="idAgente" type="text" class="validate" required="">
+            <label for="idAgente">Identificación del agente</label>
+          </div>
+          <div class="input-field col s12 m12 l6">
+            <input id="importe" name="importe" type="number" min="100000" max="1000000000" step="100" value="100000" class="validate" required="">
+            <label for="importe">Importe de la multa</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l12">
+            <input id="ley" name="ley" type="text" class="validate" required="">
+            <label for="ley">Ley Infringida</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l12">
+            <textarea id="descricion" name="descripcion" class="materialize-textarea" required=""></textarea>
+            <label for="descricion">Descripción</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="row">
+      <fieldset>
+        <legend class="flow-text">Dirección del hecho</legend>
+        <div class="row">
+          <div class="input-field col s6 m6 12">
+              <input id="carreraMulta" name="carreraMulta" type="text" class="validate" required="">
+              <label for="carreraMulta">Carrera</label>
+          </div>
+          <div class="input-field col s6 m6 12">
+              <input id="kilometroMulta" name="kilometroMulta" type="text" class="validate" required="">
+              <label for="kilometroMulta">Kilometro</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 12">
+              <input id="calleMulta" name="calleMulta" type="text" class="validate" required="">
+              <label for="calleMulta">Calle</label>
+          </div>
+          <div class="input-field col s6 m6 12">
+              <input id="numeroMulta" name="numeroMulta" type="text" class="validate" required="">
+              <label for="numeroMulta">Numero</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 12">
+              <input id="ciudadMulta" name="ciudadMulta" type="text" class="validate" required="">
+              <label for="ciudadMulta">Ciudad</label>
+          </div>
+          <div class="input-field col s6 m6 12">
+              <input id="departamentoMulta" name="departamentoMulta" type="text" class="validate" required="">
+              <label for="departamentoMulta">Departamento</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="row">
+      <div class="row center">
+        <button class="btn waves-effect waves-light light-green darken-3" type="submit" name="action">
+          Enviar
+          <i class="material-icons right">send</i>
+        </button>
+        <button class="btn waves-effect waves-light orange darken-3" type="button" value="cancel" name="cancel" onclick="cancelAdd()">
+          Cancelar
+          <i class="material-icons right">backspace</i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
