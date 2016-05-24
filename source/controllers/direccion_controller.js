@@ -29,9 +29,27 @@ exports.add = function(req, res) {
   });
 }
 
-// exports.edit = function (req, res) {
-//   req.
-// }
+exports.update = function (req, res) {
+  var values = {
+    Calle: req.body.calle,
+    Numero: req.body.numero,
+    Ciudad: req.body.ciudad,
+    Departamento: req.body.departamento
+  };
+  console.log("ID: dir: " + req.body.id_dir);
+  models.Direccion.update(values ,{
+    where: {
+      ID_Direccion: req.body.id_dir
+    }
+  }).then(function (updated) {
+    console.log("La direccion fue actualizada".green);
+    console.log("updated : " + updated);
+    res.redirect("/admin/direcciones");
+  }).catch(function (err) {
+    console.error("Un error durante la actualización, Error: " + err);
+    res.render('error', {message: "Un error durante la actualización", error: err});
+  });
+}
 
 exports.remove = function (req, res) {
   models.Direccion.destroy({
@@ -39,14 +57,25 @@ exports.remove = function (req, res) {
       ID_Direccion: req.body.ID_Direccion
     }
   }).then(function () {
-    console.log("La direccion fue eliminada");
+    console.log("La direccion fue eliminada".greem);
     res.redirect('/admin/direcciones')
   }).catch(function (err) {
-    console.error("Un error durante la eliminacion: " + err);
+    console.error("Un error durante la eliminacion. Error: " + err);
     res.redirect('/admin/direcciones')
   });
 }
 
 exports.dirForm = function(req, res) {
   res.render('direcciones/dirForm');
+};
+
+exports.editForm = function(req, res) {
+  var id = req.params.id_dir;
+  models.Direccion.findById(id).then(function (direccion) {
+    console.log("Se encontro la direccion con id " + id);
+    res.render('direcciones/dirEditForm', {dir: direccion});
+  }).catch(function (err) {
+    console.error("No se pudo obtener direccion. Error: "+ err);
+    res.end();
+  });
 }

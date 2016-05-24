@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('personas', {
+	return sequelize.define('persona', {
 		NIT_Persona: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,

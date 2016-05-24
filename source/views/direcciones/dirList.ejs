@@ -14,7 +14,6 @@
 
       <tbody>
         <% for (var i=0; i < data.length; i++) {%>
-          <form action="/admin/direcciones/remove?_method=delete" method="post">
             <tr>
               <td><%= data[i].ID_Direccion %></td>
               <td><%= data[i].Calle %></td>
@@ -22,16 +21,17 @@
               <td><%= data[i].Ciudad %></td>
               <td><%= data[i].Departamento %></td>
               <td>
-                <input type="hidden" name="ID_Direccion" value="<%= data[i].ID_Direccion %>">
-                <button class="waves-effect waves-light btn" href="/admin/direcciones/edit/:<%= data[i].ID_Direccion%>">
-                  <i class="material-icons right">mode_edit</i>
-                </button>
-                <button class="waves-effect waves-light btn" type="submit" name="action">
-                  <i class="material-icons right ">delete_forever</i>
-                </button>
+                <form action="/admin/direcciones/remove?_method=delete" method="post">
+                  <input type="hidden" name="ID_Direccion" value="<%= data[i].ID_Direccion %>">
+                  <a class="waves-effect waves-light btn" href="/admin/direcciones/edit/<%= data[i].ID_Direccion %>">
+                    <i class="material-icons right">mode_edit</i>
+                  </a>
+                  <button class="waves-effect waves-light btn" type="submit" name="action">
+                    <i class="material-icons right ">delete_forever</i>
+                  </button>
+                </form>
               </td>
             </tr>
-          </form>
         <% } %>
       </tbody>
     </table>

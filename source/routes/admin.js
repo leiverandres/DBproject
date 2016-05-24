@@ -9,8 +9,10 @@ router.get('/', function(req, res) {
 
 router.get('/direcciones', dirControllers.retrieveAll);
 router.post('/direcciones', dirControllers.add);
-router.get('/direcciones/add', dirControllers.dirForm);
+router.put('/direcciones/update', dirControllers.update);
 router.delete('/direcciones/remove', dirControllers.remove);
+router.get('/direcciones/add', dirControllers.dirForm);
+router.get('/direcciones/edit/:id_dir', dirControllers.editForm);
 
 router.get('/matriculas/add', matControllers.matriculaForm);
 

@@ -30,14 +30,14 @@ Direccion.hasOne(Persona, {as: 'Direccion', foreignKey: 'ID_Direccion'});
 Modelo.belongsToMany(Persona, {as: 'Modelo', through: Matricula_Vehiculo, foreignKey: 'Modelo'});
 Persona.belongsToMany(Modelo, {as: 'Propietario', through: Matricula_Vehiculo, foreignKey: 'NIT_Propietario'});
 
-Direccion_Multa.belongsTo(Direccion, {foreignKey:'ID_Direccion'});
+Direccion_Multa.belongsTo(Direccion, {as: 'Direccion', foreignKey:'ID_Direccion'});
 
 Agente_Transito.belongsTo(Persona, {as: 'NIT', foreignKey: 'NIT_Agente'});
 
 Agente_Transito.belongsToMany(Persona, {as: 'Agente', through: Multa, foreignKey: 'ID_Agente'});
 Persona.belongsToMany(Agente_Transito, {as: 'Persona', through: Multa, foreignKey: 'NIT_Persona'});
 Multa.belongsTo(Matricula_Vehiculo, {foreignKey: 'Placa'});
-Multa.belongsTo(Direccion_Multa, {foreignKey: 'Direccion_Multa'});
+Multa.belongsTo(Direccion_Multa, {as: 'dir_Multa'foreignKey: 'Direccion_Multa'});
 
 // =============================================================================
 
@@ -74,6 +74,7 @@ connection.sync({
       console.log("LA direccion as: " + dir.Direccion);
     });
   });
+
 }).catch(function(err) {
   console.log(colors.red.bold("Data base connection failed!\n" + err));
 });
