@@ -1,4 +1,5 @@
 var models = require('./../models/models.js');
+var colors = require('colors');
 
 exports.retrieveAll = function(req, res) {
   models.Direccion.findAll().then(function(direcciones) {
@@ -33,7 +34,6 @@ exports.add = function(req, res) {
 // }
 
 exports.remove = function (req, res) {
-  console.log("req: " + req.body.ID_Direccion);
   models.Direccion.destroy({
     where: {
       ID_Direccion: req.body.ID_Direccion
