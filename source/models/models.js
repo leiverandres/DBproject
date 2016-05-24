@@ -43,7 +43,7 @@ Multa.belongsTo(Direccion_Multa, {foreignKey: 'Direccion_Multa'});
 // =============================================================================
 
 connection.sync({
-  force: true, // drop tables before create them
+  force: false, // drop tables before create them
   logging: console.log
 }).then(function() {
   console.log("Data base connection done!".bold.green);
@@ -59,22 +59,22 @@ connection.sync({
   //   Ciudad: 'Pereira',
   //   Departamento: 'Risaralda'
   // });
-  Direccion.build({
-    Calle: "17",
-    Numero: 6,
-    Ciudad: "Manizales",
-    Departamento: "Caldas"
-  }).save().then(function (dir) {
-    console.log("created:" + dir.ID_Direccion);
-    Direccion_Multa.build({
-      Carretera: "Carretera 5",
-      Kilometro: "40",
-    }).save().then(function (dir_mult) {
-      console.log("direccion creada:" + dir_mult);
-      dir_mult.setDireccion(dir);
-      console.log("LA direccion as: " + dir.Direccion);
-    });
-  });
+  // Direccion.build({
+  //   Calle: "17",
+  //   Numero: 6,
+  //   Ciudad: "Manizales",
+  //   Departamento: "Caldas"
+  // }).save().then(function (dir) {
+  //   console.log("created:" + dir.ID_Direccion);
+  //   Direccion_Multa.build({
+  //     Carretera: "Carretera 5",
+  //     Kilometro: "40",
+  //   }).save().then(function (dir_mult) {
+  //     console.log("direccion creada:" + dir_mult);
+  //     dir_mult.setDireccion(dir);
+  //     console.log("LA direccion as: " + dir.Direccion);
+  //   });
+  // });
 }).catch(function(err) {
   console.log(colors.red.bold("Data base connection failed!\n" + err));
 });

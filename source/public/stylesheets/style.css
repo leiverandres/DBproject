@@ -10,6 +10,7 @@ main {
 
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
