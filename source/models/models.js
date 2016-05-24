@@ -37,6 +37,7 @@ Agente_Transito.belongsTo(Persona, {as: 'NIT', foreignKey: 'NIT_Agente'});
 Agente_Transito.belongsToMany(Persona, {as: 'Agente', through: Multa, foreignKey: 'ID_Agente'});
 Persona.belongsToMany(Agente_Transito, {as: 'Persona', through: Multa, foreignKey: 'NIT_Persona'});
 Multa.belongsTo(Matricula_Vehiculo, {foreignKey: 'Placa'});
+
 Multa.belongsTo(Direccion_Multa, {as: 'dir_Multa', foreignKey: 'Direccion_Multa'});
 
 // =============================================================================

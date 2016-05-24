@@ -21,11 +21,11 @@ exports.add = function(req, res) {
   ).save().then(function(direccion) {
     console.log("Agrego la direccion");
     res.locals.title = "El dato fue insertado";
-    res.redirect("/");
+    res.redirect("/admin/direcciones/");
   }).catch(function(err) {
     console.log(err);
     res.locals.title = "El dato no pudo ser insertado";
-    res.redirect("/");
+    res.redirect("/admin/direcciones/");
   });
 }
 
