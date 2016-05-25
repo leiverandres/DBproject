@@ -1,57 +1,61 @@
-<h2> Multa # <%= multa.ID_Multa %> </h2>
-<div class="row">
-  <div class="col s12 m12 l12">
-    <table class="centered striped">
-        <thead>
-          <tr>
-              <th data-field="descripcion" class="flow-text">Campo</th>
-              <th data-field="value" class="flow-text">Valor</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="flow-text"> Persona Multada </td>
-            <td class="flow-text">
-              <%= multa.Persona.Nombres_Persona + " " + multa.Persona.Apellidos_Persona %>
-            </td>
-          </tr>
-          <tr>
-            <td class="flow-text"> Fecha Multa </td>
-            <td class="flow-text">
-              <%= multa.Fecha_Multa.toDateString() %>
-            </td>
-          </tr>
-          <tr>
-            <td class="flow-text"> Ley Infringida </td>
-            <td class="flow-text">
-              <%= multa.Ley_Infringida %>
-            </td>
-          </tr>
-          <tr>
-            <td class="flow-text"> Departamento </td>
-            <td class="flow-text">
-              <%= multa.dir_Multa.Direccion.Departamento %>
-            </td>
-          </tr>
-          <tr>
-            <td class="flow-text"> Ciudad </td>
-            <td class="flow-text">
-              <%= multa.dir_Multa.Direccion.Ciudad %>
-            </td>
-          </tr>
-          <tr>
-            <td class="flow-text"> Valor a Pagar </td>
-            <td class="flow-text">
-              <%= multa.Importe_Multa %>
-            </td>
-          </tr>
-          <tr>
-            <td class="flow-text"> Descripcion </td>
-            <td class="flow-text">
-              <%= multa.Descripcion %>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+<%= if (multa !== null) { %>
+  <h2> Multa # <%= multa.ID_Multa %> </h2>
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <table class="centered striped">
+          <thead>
+            <tr>
+                <th data-field="descripcion" class="flow-text">Campo</th>
+                <th data-field="value" class="flow-text">Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="flow-text"> Persona Multada </td>
+              <td class="flow-text">
+                <%= multa.Persona.Nombres_Persona + " " + multa.Persona.Apellidos_Persona %>
+              </td>
+            </tr>
+            <tr>
+              <td class="flow-text"> Fecha Multa </td>
+              <td class="flow-text">
+                <%= multa.Fecha_Multa.toDateString() %>
+              </td>
+            </tr>
+            <tr>
+              <td class="flow-text"> Ley Infringida </td>
+              <td class="flow-text">
+                <%= multa.Ley_Infringida %>
+              </td>
+            </tr>
+            <tr>
+              <td class="flow-text"> Departamento </td>
+              <td class="flow-text">
+                <%= multa.dir_Multa.Direccion.Departamento %>
+              </td>
+            </tr>
+            <tr>
+              <td class="flow-text"> Ciudad </td>
+              <td class="flow-text">
+                <%= multa.dir_Multa.Direccion.Ciudad %>
+              </td>
+            </tr>
+            <tr>
+              <td class="flow-text"> Valor a Pagar </td>
+              <td class="flow-text">
+                <%= multa.Importe_Multa %>
+              </td>
+            </tr>
+            <tr>
+              <td class="flow-text"> Descripcion </td>
+              <td class="flow-text">
+                <%= multa.Descripcion %>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
+<% } else { %>
+  <h1>No hay información</h1>
+<% } %>

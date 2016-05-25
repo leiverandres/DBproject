@@ -3,6 +3,7 @@ var colors = require('colors');
 
 exports.multaForm = function (req, res) {
   var date = new Date();
+  console.log("HEY I'M in multa form".green);
   res.render('multas/multaForm', {date: date.toDateString()});
 }
 
