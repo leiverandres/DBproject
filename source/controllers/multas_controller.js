@@ -1,4 +1,5 @@
 var models = require('./../models/models.js');
+var colors = require('colors');
 
 exports.multaForm = function (req, res) {
   var date = new Date();
@@ -27,90 +28,77 @@ exports.retrieveAll = function (req, res) {
 }
 
 exports.add = function (req, res) {
-  // Direccion.build({
-  //   Calle: "17",
-  //   Numero: 6,
-  //   Ciudad: "Manizales",
-  //   Departamento: "Caldas"
-  // }).save().then(function (dir) {
-  //   console.log("created:" + dir.ID_Direccion);
-  //   Direccion_Multa.build({
-  //     Carretera: "Carretera 5",
-  //     Kilometro: "40",
-  //   }).save().then(function (dir_mult) {
-  //     console.log("direccion creada:" + dir_mult);
-  //     dir_mult.setDireccion(dir);
-  //     console.log("LA direccion as: " + dir.Direccion);
-  //   });
-  // });
-  // Create Persona
-  // matricula deberia estar creada
-
-  // models.Direccion_Multa.create({
-  //   Carretera: req.body.carreteraMulta,
-  //   Kilometro: req.body.kilometroMulta,
-  //   Direccion: {
-  //     Calle: req.body.calleMulta,
-  //     Numero: req.body.numeroMulta,
-  //     Ciudad: req.body.ciudadMulta,
-  //     Departamento: req.body.departamentoMulta
-  //   }
-  // }, {
-  //   include: [{
-  //     model: models.Direccion,
-  //     as: 'Direccion'
-  //   }]
-  // }).then();
-
-  models.Agente_Transito.findById(req.body.idAgente).then(function (agente) {
-    models.Multa.create({
-      Fecha_Multa: new Date,
-      Ley_Infringida: req.body.ley,
-      Importe_Multa: parseFloat(req.body.importe),
-      Descripcion: req.body.descripcion,
-      dir_Multa: {
-        Carretera: req.body.carreteraMulta,
-        Kilometro: req.body.kilometroMulta,
-        Direccion: {
-          Calle: req.body.calleMulta,
-          Numero: req.body.numeroMulta,
-          Ciudad: req.body.ciudadMulta,
-          Departamento: req.body.departamentoMulta
+  var cur_date = new Date();
+  models.Matricula_Vehiculo.findOne({
+    where: {
+      Matricula: req.body.placa
+    }
+  }).then(function (matricula) {
+    console.log("Matricula se encuentra registrada".green);
+    models.Agente_Transito.findById(req.body.idAgente).then(function (agente) {
+      console.log("El agente si existe".green);
+      models.Multa.build({
+        Fecha_Multa: cur_date,
+        Ley_Infringida: req.body.ley,
+        Importe_Multa: parseFloat(req.body.importe),
+        Descripcion: req.body.descripcion,
+        dir_Multa: {
+          Carretera: req.body.carreteraMulta,
+          Kilometro: req.body.kilometroMulta,
+          Direccion: {
+            Calle: req.body.calleMulta,
+            Numero: req.body.numeroMulta,
+            Ciudad: req.body.ciudadMulta,
+            Departamento: req.body.departamentoMulta
+          }
         }
-      }
-    }, {
-      include: [{
-        model: models.Direccion_Multa,
-        as: 'dir_Multa',
+      }, {
         include: [{
-            model: models.Direccion,
-            as: 'Direccion'
-          }]
-      }]
-    }).then(function (multa) {
-      console.log("Multa creada");
-    }).catch(function (err) {
+          model: models.Direccion_Multa,
+          as: 'dir_Multa',
+          include: [{
+              model: models.Direccion,
+              as: 'Direccion'
+            }]
+        }]
+      }).save().then(function (multa) {
+        multa.setAgente_Transito(agente);
+        // var new_Matricula = models.Matricula_Vehiculo.build({
+        //   Matricula: req.body.placa,
+        //   Fecha_Matricula: new Date()
+        // });
+        // multa.setMatricula(matricula);
+        models.Persona.findById(req.body.nitInfractor).then(function (persona) {
+          console.log(persona.green);
+          multa.setPersona(persona);
+        }).catch(function (err) {
+          console.log("No se encontro la persona".red);
+          var person_date = req.body.fechaNacimiento;
+          var date = person_date.split("/");
+          multa.createPersona({
+            NIT_Persona: req.body.nitInfractor,
+            Nombres_Persona: req.body.nombres,
+            Apellidos_Persona: req.body.apellidos,
+            Fecha_Nacimiento: new Date(date[2], date[0], date[1])
 
+          }).then(function (person) {
+            console.log("Persona creada".green);
+          }).catch(function (err) {
+            console.log("Persona no pudo ser creada".red);
+          });
+        });
+        console.log("Multa creada".green);
+        res.end();
+      }).catch(function (err) {
+          console.log("Error creando multa".red);
+          res.render('multas/multaForm', {message: "Error creando multa", date: date.toDateString()})
+      });
+    }).catch(function (err) {
+      console.log("El agente no existe".red);
+      res.render('multas/multaForm', {message: "El agente no esta registrado", date: date.toDateString()});
     });
   }).catch(function (err) {
-    console.log("El agente no existe");
-    res.render('multas/multaForm', {message: "El agente no esta registrado"});
+    console.log("La matricula no esta registrada".red);
+    res.render('multas/multaForm', {message: "La placa no esta registrada", date: date.toDateString()});
   });
-
-  // models.Agente_Transito.create({
-  //   ID_Agente: 123456,
-  //   NIT: {
-  //     NIT_Persona: 1088328826,
-  //     Nombres_Persona: "NOMBRES",
-  //     Apellidos_Persona: "APELLIDOS",
-  //     Fecha_Nacimiento: new Date()
-  //   }
-  // }, {
-  //   include: [ {
-  //     model: models.Persona,
-  //     as: 'NIT'
-  //   }]
-  // });
-  console.log(JSON.stringify(req.body));
-  res.send("Hey i'm in post")
 }
