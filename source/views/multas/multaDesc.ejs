@@ -1,0 +1,57 @@
+<h2> Multa # <%= id_multa %> </h2>
+<div class="row">
+  <div class="col s12 m12 l12">
+    <table>
+        <thead>
+          <tr>
+              <th data-field="descripcion"></th>
+              <th data-field="value"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="flow-text"> Persona Multada </td>
+            <td class="flow-text">
+              <%= multa[i].Persona %>
+            </td>
+          </tr>
+          <tr>
+            <td class="flow-text"> Fecha Multa </td>
+            <td class="flow-text">
+              <%= multa[i].Fecha_Multa %>
+            </td>
+          </tr>
+          <tr>
+            <td class="flow-text"> Ley Infringida </td>
+            <td class="flow-text">
+              <%= multa[i].Ley_Infringida %>
+            </td>
+          </tr>
+          <tr>
+            <td class="flow-text"> Departamento </td>
+            <td class="flow-text">
+              <%= multa[i].Departamento %>
+            </td>
+          </tr>
+          <tr>
+            <td class="flow-text"> Ciudad </td>
+            <td class="flow-text">
+              <%= multa[i].Ciudad %>
+            </td>
+          </tr>
+          <tr>
+            <td class="flow-text"> Valor a Pagar </td>
+            <td class="flow-text">
+              <%= multa[i].Importe %>
+            </td>
+          </tr>
+          <tr>
+            <td class="flow-text"> Descripcion </td>
+            <td class="flow-text">
+              <%= multa[i].Descripcion %>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
