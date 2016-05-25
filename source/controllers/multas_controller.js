@@ -8,7 +8,11 @@ exports.multaForm = function (req, res) {
 
 exports.add = function (req, res) {
   var cur_date = new Date();
-  models.Matricula_Vehiculo.findById(req.body.placa).then(function (matricula) {
+  models.Matricula_Vehiculo.findOne({
+    where: {
+      Matricula: req.body.placa
+    }
+  }).then(function (matricula) {
     console.log("Matricula se encuentra registrada".green);
     models.Agente_Transito.findById(req.body.idAgente).then(function (agente) {
       console.log("El agente si existe".green);
@@ -42,7 +46,7 @@ exports.add = function (req, res) {
         //   Matricula: req.body.placa,
         //   Fecha_Matricula: new Date()
         // });
-        multa.setMatricula(new_Matricula);
+        // multa.setMatricula(matricula);
         models.Persona.findById(req.body.nitInfractor).then(function (persona) {
           console.log(persona.green);
           multa.setPersona(persona);
@@ -66,7 +70,7 @@ exports.add = function (req, res) {
         res.end();
       }).catch(function (err) {
           console.log("Error creando multa".red);
-          res.send("Error creando multa");
+          res.render('multas/multaForm', {message: "Error creando multa", date: date.toDateString()})
       });
     }).catch(function (err) {
       console.log("El agente no existe".red);
