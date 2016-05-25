@@ -1,54 +1,54 @@
-<h2> Multa # <%= id_multa %> </h2>
+<h2> Multa # <%= multa.ID_Multa %> </h2>
 <div class="row">
   <div class="col s12 m12 l12">
-    <table>
+    <table class="centered striped">
         <thead>
           <tr>
-              <th data-field="descripcion"></th>
-              <th data-field="value"></th>
+              <th data-field="descripcion" class="flow-text">Campo</th>
+              <th data-field="value" class="flow-text">Valor</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="flow-text"> Persona Multada </td>
             <td class="flow-text">
-              <%= multa[i].Persona %>
+              <%= multa.Persona.Nombres_Persona + " " + multa.Persona.Apellidos_Persona %>
             </td>
           </tr>
           <tr>
             <td class="flow-text"> Fecha Multa </td>
             <td class="flow-text">
-              <%= multa[i].Fecha_Multa %>
+              <%= multa.Fecha_Multa.toDateString() %>
             </td>
           </tr>
           <tr>
             <td class="flow-text"> Ley Infringida </td>
             <td class="flow-text">
-              <%= multa[i].Ley_Infringida %>
+              <%= multa.Ley_Infringida %>
             </td>
           </tr>
           <tr>
             <td class="flow-text"> Departamento </td>
             <td class="flow-text">
-              <%= multa[i].Departamento %>
+              <%= multa.dir_Multa.Direccion.Departamento %>
             </td>
           </tr>
           <tr>
             <td class="flow-text"> Ciudad </td>
             <td class="flow-text">
-              <%= multa[i].Ciudad %>
+              <%= multa.dir_Multa.Direccion.Ciudad %>
             </td>
           </tr>
           <tr>
             <td class="flow-text"> Valor a Pagar </td>
             <td class="flow-text">
-              <%= multa[i].Importe %>
+              <%= multa.Importe_Multa %>
             </td>
           </tr>
           <tr>
             <td class="flow-text"> Descripcion </td>
             <td class="flow-text">
-              <%= multa[i].Descripcion %>
+              <%= multa.Descripcion %>
             </td>
           </tr>
       </tbody>

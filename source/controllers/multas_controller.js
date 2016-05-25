@@ -31,7 +31,6 @@ exports.retrieveAll = function (req, res) {
     }
   ]}).then(function (multas) {
   res.render('multas/multasList', {multa: multas});
-  // res.end();
 }).catch(function (err) {
   console.log(("error: " + err).red);
   res.local.title = "No se pueden mostrar las Multas";
