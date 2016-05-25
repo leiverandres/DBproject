@@ -1,0 +1,76 @@
+<h2> Ingresa los datos del Agente </h2>
+<div class="row right">
+  <h4><%= date %> </h4>
+</div>
+<div clas="row">
+  <form action="/agente_transito" method='post' class="col l12 m12 s12">
+    <div class="row">
+      <fieldset class="col l12 s12 m12">
+        <legend class="flow-text">Informacion Personal</legend>
+        <div class="row">
+          <div class="input-field col l6 s12 m12">
+            <input id="identificacion" name="identificacion" type="text" class="validate" required="">
+            <label for="identificacion">ID Agente Transito</label>
+          </div>
+          <div class="input-field col l6 s12 m12">
+            <input id="nitPersona" name="nitPersona" type="text" class="validate" required="" pattern="[\d]{1,15}">
+            <label for="nitPersona">Nit/Cedula</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col l6 s12 m12">
+            <input id="nombre" name="nombre" type="text" class="validate" required="">
+            <label for="nombre">Nombres </label>
+          </div>
+          <div class="input-field col l6 s12 m12">
+            <input id="apellido" name="apellido" type="text" class="validate" required="">
+            <label for="apellido">Apellidos </label>
+          </div>
+        </div>
+          <div class="row">
+              <div class="col s12 m12 l12">
+                <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                <input placeholder="MM/DD/YYYY" id="fechaNacimiento" name="fechaNacimiento" type="date" class="validate color:#212121" required="">
+              </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="row">
+        <fieldset class="col s12 m12 l12">
+          <legend class="flow-text">Informacion Residencia</legend>
+          <div class="row">
+            <div class="input-field col l6 s12 m12">
+              <input id="calle" name="calle" type="text" class="validate" required="" >
+              <label for="calle">Calle</label>
+            </div>
+            <div class="input-field col l6 s12 m12">
+              <input id="numero" name="numero" type="text" class="validate" required="">
+              <label for="numero">Numero/Piso</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col l6 s12 m12">
+              <input id="departamento" name="departamento" type="text" class="validate" required="" >
+              <label for="departamento">Departamento</label>
+            </div>
+            <div class="input-field col l6 s12 m12">
+              <input id="ciudad" name="ciudad" type="text" class="validate" required="">
+              <label for="ciudad">Ciudad</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="row">
+        <div class="row center">
+          <button class="btn waves-effect waves-light light-green darken-3" type="submit" name="action">
+            Enviar
+            <i class="material-icons right">send</i>
+          </button>
+          <button class="btn waves-effect waves-light orange darken-3" type="button" value="cancel" name="cancel" onclick="cancelAgentAdd()">
+            Cancelar
+            <i class="material-icons right">backspace</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>

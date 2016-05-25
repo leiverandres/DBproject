@@ -1,0 +1,44 @@
+<h2> Historico Multas </h2>
+<div class="row">
+  <div class="col s12 m6">
+    <% if (models.multa.length) { %>
+      <% for (var i=0; i < multa.length; i++) { %>
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Multa Example</span>
+              <ul>
+                <li>
+                  <p class="flow-text">
+                    <%= multa[i].Agente_Transito %>
+                  </p>
+                </li>
+                <li>
+                  <p class="flow-text">
+                    <%= multa[i].Fecha_Multa %>
+                  </p>
+                </li>
+                <li>
+                  <p class="flow-text">
+                    <%= multa[i].Departamento %>
+                  </p>
+                </li>
+                <li>
+                  <p class="flow-text">
+                    <%= multa[i].Ciudad %>
+                  </p>
+                </li>
+                <li>
+                  <p class="flow-text">
+                    <%= multa[i].Importe_Multa %>
+                  </p>
+                </li>
+              </ul>
+          </div>
+          <div class="card-action">
+            <a href="/multas/<%= multa[i].ID_Multa %>">Ver Mas</a>
+          </div>
+        </div>
+      <% } %>
+    <% } %>
+  </div>
+</div>

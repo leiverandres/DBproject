@@ -5,6 +5,27 @@ exports.multaForm = function (req, res) {
   res.render('multas/multaForm', {date: date.toDateString()});
 }
 
+exports.retrieveAll = function (req, res) {
+  models.multa.findAll({
+  include: [
+    { agente_transito: ID_Agente,  include: [
+      { Persona: NIT_Persona }
+      ]
+    },
+    { persona: NIT_Persona },
+    { matricula_vehiculo: Placa },
+    { direccion_multa: Direccion_Multa }
+  ]
+}).then(function (multas) {
+  console.log(multas);
+  res.render('multas/multasList', {multa: multas})
+}).catch(function (err) {
+  console.log(err);
+  res.local.title = "No se pueden mostrar las Multas";
+  res.end();
+});
+}
+
 exports.add = function (req, res) {
   // Direccion.build({
   //   Calle: "17",
