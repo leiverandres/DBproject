@@ -2,9 +2,7 @@ var express = require('express');
 var controller = require('./../controllers/multas_controller');
 router = express.Router();
 
-router.get('/', function(req, res) {
-  res.render('multas/multasList');
-});
+router.get('/', controller.retrieveAll);
 
 // localhost:port/multas with post
 router.post('/', controller.add);

@@ -7,21 +7,30 @@ exports.multaForm = function (req, res) {
 }
 
 exports.retrieveAll = function (req, res) {
-  models.multa.findAll({
+  models.Multa.findAll({
   include: [
-    { agente_transito: ID_Agente,  include: [
-      { Persona: NIT_Persona }
-      ]
-    },
-    { persona: NIT_Persona },
-    { matricula_vehiculo: Placa },
-    { direccion_multa: Direccion_Multa }
-  ]
-}).then(function (multas) {
+    { model: models.Agente_Transito,
+      as: 'Agente_Transito',
+      include: [{
+        model: models.Persona,
+        as: 'NIT'
+      }]
+    }, {
+      model: models.Persona,
+      as: 'Persona'
+    }, {
+      model: models.Matricula_Vehiculo,
+      as: 'Matricula'
+    }, {
+      model: models.Direccion_Multa,
+      as: 'dir_Multa'
+    }
+  ]}).then(function (multas) {
   console.log(multas);
-  res.render('multas/multasList', {multa: multas})
+  res.render('multas/multasList', {multa: multas});
+  // res.end();
 }).catch(function (err) {
-  console.log(err);
+  console.log(("error: " + err).red);
   res.local.title = "No se pueden mostrar las Multas";
   res.end();
 });
