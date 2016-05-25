@@ -40,8 +40,35 @@ exports.retrieveAll = function (req, res) {
 }
 
 exports.multaInfo = function (req, res) {
-  // get id from params
-  res.render('multas/multaInfo', {id_multa: 45});
+  models.Multa.findById(req.params.id_multa, {
+    include: [
+      { model: models.Agente_Transito,
+        as: 'Agente_Transito',
+        include: [{
+          model: models.Persona,
+          as: 'NIT'
+        }]
+      }, {
+        model: models.Persona,
+        as: 'Persona'
+      }, {
+        model: models.Matricula_Vehiculo,
+        as: 'Matricula'
+      }, {
+        model: models.Direccion_Multa,
+        as: 'dir_Multa',
+        include: [{
+          model: models.Direccion,
+          as: 'Direccion'
+        }]
+      }
+    ]
+  }).then(function (multa) {
+    console.log("Info de la multa obtenida".green);
+    res.render('multas/multaDesc', {multa: multa});
+  }).catch(function (err) {
+    console.log("Erro obteniendo multa".red);
+  });
 }
 
 exports.add = function (req, res) {
