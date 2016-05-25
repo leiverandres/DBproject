@@ -23,10 +23,13 @@ exports.retrieveAll = function (req, res) {
       as: 'Matricula'
     }, {
       model: models.Direccion_Multa,
-      as: 'dir_Multa'
+      as: 'dir_Multa',
+      include: [{
+        model: models.Direccion,
+        as: 'Direccion'
+      }]
     }
   ]}).then(function (multas) {
-  console.log(multas);
   res.render('multas/multasList', {multa: multas});
   // res.end();
 }).catch(function (err) {
@@ -34,6 +37,11 @@ exports.retrieveAll = function (req, res) {
   res.local.title = "No se pueden mostrar las Multas";
   res.end();
 });
+}
+
+exports.multaInfo = function (req, res) {
+  // get id from params
+  res.render('multas/multaInfo', {id_multa: 45});
 }
 
 exports.add = function (req, res) {
