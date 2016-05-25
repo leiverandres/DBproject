@@ -110,7 +110,7 @@ exports.add = function (req, res) {
         //   Matricula: req.body.placa,
         //   Fecha_Matricula: new Date()
         // });
-        // multa.setMatricula(matricula);
+        multa.setMatricula(matricula);
         models.Persona.findById(req.body.nitInfractor).then(function (persona) {
           console.log(persona.green);
           multa.setPersona(persona);
@@ -131,7 +131,7 @@ exports.add = function (req, res) {
           });
         });
         console.log("Multa creada".green);
-        res.end();
+        res.redirect('/multas');
       }).catch(function (err) {
           console.log("Error creando multa".red);
           res.render('multas/multaForm', {message: "Error creando multa", date: date.toDateString()})
