@@ -1,18 +1,17 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var partials = require('express-partials');
-var methodOverride = require('method-override')
+import express from 'express'
+import path from 'path'
+import favicon from 'serve-favicon'
+import logger from 'morgan'
+import cookieParser from 'cookie-parser'
+import bodyParser from 'body-parser'
+import partials from 'express-partials'
+import methodOverride from 'method-override'
 
-var routes = require('./routes/index');
+var index = require('./routes/index');
 var multas = require('./routes/multas');
-var users = require('./routes/users');
 var admin = require('./routes/admin');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,7 +27,7 @@ app.use(methodOverride('_method'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', index);
 app.use('/multas', multas);
 app.use('/admin', admin);
 

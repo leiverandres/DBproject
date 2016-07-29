@@ -71,6 +71,39 @@ exports.multaInfo = function (req, res) {
   });
 }
 
+// function getAgente(id) {
+//   models.Agente_Transito.findById(id).then(function (agente) {
+//     console.log(("Agente Obtenido. Agente : ===== " + agente).green);
+//     return agente;
+//   }).catch(function (err) {
+//     console.log(("Error obteniendo agente. Error: " + err).red);
+//   });
+// };
+
+// function getMatricula(id) {
+//   models.Matricula_Vehiculo.findById(id).then(function (mat) {
+//     // console.log(("Matricula obtenida. Matricula : ==== " + mat).green);
+//     return mat;
+//   }).catch(function (err) {
+//     // console.log(("Error obteniendo matricula. Error : " + err).red);
+//   });
+// };
+
+// exports.add = function (req, res) {
+//   var agente = getAgente(req.body.idAgente);
+//   var matricula = getMatricula(req.body.placa);
+//   console.log(("Matricula obtenida. Matricula : ==== " + matricula).green);
+//   console.log(("Agente Obtenido. Agente : ===== " + agente).green);
+//   // if (agente === null) {
+//   //   console.log("agente null".red);
+//   // }
+//   //
+//   // if (matricula === null) {
+//   //   console.log("matricula null".red);
+//   // }
+//   res.end();
+// };
+
 exports.add = function (req, res) {
   var cur_date = new Date();
   models.Matricula_Vehiculo.findOne({

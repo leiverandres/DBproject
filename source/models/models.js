@@ -50,48 +50,48 @@ connection.sync({
   logging: console.log
 }).then(function() {
   console.log("Data base connection done!".bold.green);
-  Direccion.create({
-    Calle: 'test Calle',
-    Numero: 12,
-    Ciudad: 'Pereira',
-    Departamento: 'Risaralda'
-  });
-  Direccion.create({
-    Calle: 'test Calle 2',
-    Numero: 13,
-    Ciudad: 'Pereira',
-    Departamento: 'Risaralda'
-  });
-  Agente_Transito.create({
-    ID_Agente: 123,
-    NIT: {
-      NIT_Persona: 123456789,
-      Nombres_Persona: "FIRST NAME",
-      Apellidos_Persona: "LAST NAME",
-      Fecha_Nacimiento: new Date(1995, 04, 05),
-    }
-  }, {
-    include: [{
-      model: Persona,
-      as: 'NIT'
-    }]
-  });
-  Direccion.build({
-    Calle: "17",
-    Numero: 6,
-    Ciudad: "Manizales",
-    Departamento: "Caldas"
-  }).save().then(function (dir) {
-    console.log("created:" + dir.ID_Direccion);
-    Direccion_Multa.build({
-      Carretera: "Carretera 5",
-      Kilometro: "40",
-    }).save().then(function (dir_mult) {
-      console.log("direccion creada:" + dir_mult);
-      dir_mult.setDireccion(dir);
-      console.log("LA direccion as: " + dir.Direccion);
-    });
-  });
+  // Direccion.create({
+  //   Calle: 'test Calle',
+  //   Numero: 12,
+  //   Ciudad: 'Pereira',
+  //   Departamento: 'Risaralda'
+  // });
+  // Direccion.create({
+  //   Calle: 'test Calle 2',
+  //   Numero: 13,
+  //   Ciudad: 'Pereira',
+  //   Departamento: 'Risaralda'
+  // });
+  // Agente_Transito.create({
+  //   ID_Agente: 123,
+  //   NIT: {
+  //     NIT_Persona: 123456789,
+  //     Nombres_Persona: "FIRST NAME",
+  //     Apellidos_Persona: "LAST NAME",
+  //     Fecha_Nacimiento: new Date(1995, 4, 05),
+  //   }
+  // }, {
+  //   include: [{
+  //     model: Persona,
+  //     as: 'NIT'
+  //   }]
+  // });
+  // Direccion.build({
+  //   Calle: "17",
+  //   Numero: 6,
+  //   Ciudad: "Manizales",
+  //   Departamento: "Caldas"
+  // }).save().then(function (dir) {
+  //   console.log("created:" + dir.ID_Direccion);
+  //   Direccion_Multa.build({
+  //     Carretera: "Carretera 5",
+  //     Kilometro: "40",
+  //   }).save().then(function (dir_mult) {
+  //     console.log("direccion creada:" + dir_mult);
+  //     dir_mult.setDireccion(dir);
+  //     console.log("LA direccion as: " + dir.Direccion);
+  //   });
+  // });
   // Matricula_Vehiculo.create({
   //   Matricula: 'RDN166',
   //   Fecha_Matricula: new Date,

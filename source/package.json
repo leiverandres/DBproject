@@ -1,11 +1,13 @@
 {
   "name": "DBproject",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "nodemon --watch ./ -x npm run start"
   },
   "dependencies": {
+    "babel-register": "^6.7.2",
     "body-parser": "~1.13.2",
     "colors": "^1.1.2",
     "cookie-parser": "~1.3.5",
@@ -17,6 +19,10 @@
     "morgan": "~1.6.1",
     "mysql": "^2.10.2",
     "sequelize": "^3.22.0",
+    "sequelize-connect": "^2.0.0",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.0"
   }
 }

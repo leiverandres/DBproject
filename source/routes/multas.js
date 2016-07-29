@@ -1,6 +1,6 @@
 var express = require('express');
 var controller = require('./../controllers/multas_controller');
-router = express.Router();
+var router = express.Router();
 
 router.get('/', controller.retrieveAll);
 // localhost:port/multas with post
